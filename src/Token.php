@@ -37,28 +37,6 @@ class Token{
 		];
     }
     
-    /*****
-     * error handling for the wrong or null user inputs
-     * username = users username
-     * environment should be sandbox always for every user
-     * 
-     * username should be required
-     * environment should be required else error!
-     */
-    public function createCheckoutToken()
-    {
-        if ($this->username == "") {
-            return $this->error('phoneNumber must be provided');
-        }
-
-        $request = [
-            'username' => $this->username,
-            'environment' => $this->environment
-        ];
-
-		$response = $this->client->post('checkout/token/create', ['form_params' => $request]);
-		return $this->success($response);
-    }
 
     /*******
      * Token generation
